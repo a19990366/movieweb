@@ -11,9 +11,8 @@
     {% include 'main/menu.html' %}
     <div id="menu"></div>
     <div id="moviepic">
-      <p>{{ Movie.id }}</p>
-      {% with 'main/img/'|add:Movie.id|add:'.jpg' as staticImage %}
-        <img src="{% static staticImage %}" alt="GLEN">
+      {% with 'main/img/'|add:MovieID|add:'.jpg' as staticImage %}
+        <img src="{% static staticImage %}" alt="GLEN" width="400px" height="600px>
       {% endwith %}
     </div>
     <div id="boody">

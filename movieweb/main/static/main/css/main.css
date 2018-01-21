@@ -4,7 +4,7 @@
  padding: 0;
 }
 body{
-  background:url(../img/background.jpg);
+  background:url(../img/bg.jpg);
 }
 label#menu{
   float: left;
@@ -121,8 +121,10 @@ img#like {
 
 table#tableA {
   text-align: center;
-  margin-left:auto; 
-  margin-right:auto;
+}
+
+div#forms{
+  margin: center
 }
 
 /* Messages */

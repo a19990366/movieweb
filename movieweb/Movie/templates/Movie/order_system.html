@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+    <title>订票页面</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+</head>
+<body>
+{% include 'main/menu.html' %}
+<div class="container">
+    <div class="jumbotron">
+        <h1>線上訂票系統</h1>
+    </div>
+
+    <h3>當前電影信息</h3>
+
+    <table id="tableA" class="table table-bordered"  "border:3px #cccccc solid;" cellpadding="10" border='1'>
+        <thead>
+        <tr>
+            <th>電影編號</th>
+            <th>電影名稱</th>
+            <th>開播時間</th>
+            <th>剩餘座位</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for ticket in tickets %}
+        <tr>
+            <td>{{ ticket.num }}</td>
+            <td>{{ ticket.name }}</td>
+            <td>{{ ticket.time|date:"Y-m-d H:i" }}</td>
+            <td>{{ ticket.seats }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>填入資料開始訂票</h2>
+    <form action="{% url 'Movie:Order' %}" method="post">
+          {% csrf_token %}
+        <div>
+            <div>
+                <label for="ticket_num">電影編號:</label>
+                {{ ticket_form.ticket_num }}
+                {% for error in ticket_form.ticket_num.errors %}
+                     <h6 style="color: red"><strong>{{ error|escape }}</strong></h6>
+                {% endfor %}
+            </div>
+            <div>
+                <label for="name">用户姓名:</label>
+                {{ ticket_form.name }}
+                {% for error in ticket_form.name.errors %}
+                     <h6 style="color: red"><strong>{{ error|escape }}</strong></h6>
+                {% endfor %}
+            </div>
+            <div>
+                <label for="phone_number">手機號碼:</label>
+                {{ ticket_form.phone_number }}
+                {% for error in ticket_form.phone_number.errors %}
+                     <h6 style="color: red"><strong>{{ error|escape }}</strong></h6>
+                {% endfor %}
+            </div>
+            <div>
+                <br>
+                <button type="submit" name="order">訂票</button>
+                <h6 style="color: red"><strong>{{ order_message }}</strong></h6>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

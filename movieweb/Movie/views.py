@@ -1,9 +1,11 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+
 
 from Movie.models import MovieName, Person, Ticket
 from Movie.forms import TicketForm, PersonForm
-from datetime import datetime
 
 
 
@@ -27,8 +29,10 @@ def MovieIntroduction(request, articleId):
            associated comments
     '''
     Movie = get_object_or_404(MovieName, id=articleId)
+    MovieID = str(Movie.id)
     context = {
         'Movie': Movie,
+        'MovieID':MovieID,
     }
     return render(request, 'Movie/MovieIntroduction.html', context)
 
@@ -45,7 +49,7 @@ def MovieEquipment(request):
 
 
 @login_required
-def OrderTicket(request):
+def detailview(request):
     '''
     Render the BuyTicket page
     '''
@@ -53,21 +57,66 @@ def OrderTicket(request):
     persons = Person.objects.all()
     ticket_form = TicketForm()
     person_form = PersonForm()
-    context = {
+    content = {
         'tickets': tickets,
         'persons': persons,
         'ticket_form': ticket_form,
         'person_form': person_form,
     }
-    return render(request, 'Movie/OrderTicket.html', context)
+    return render(request, 'Movie/order_system.html', context=content)
 
 
 
-def OrderTickets(request):
-    '''
-    Render the OrderTickets page
-    '''
-    return render(request, 'Movie/OrderTickets.html')
+@login_required
+def Order(request):
+    
+    if request.method == 'POST':
+        
+        ticket_form = TicketForm(request.POST)
+        tickets = Ticket.objects.all()
+        persons = Person.objects.all()
+        person_form = PersonForm()
+
+        content = {
+            'tickets': tickets,
+            'persons': persons,
+            'ticket_form': ticket_form,
+            'person_form': person_form,
+            'order_message': ''
+        }
+        
+        if ticket_form.is_valid():
+
+            ticket = get_object_or_404(Ticket, num=request.POST['ticket_num'])
+            
+            person = Person.objects.create() if not Person.objects.filter(name=request.POST['name']) \
+                else Person.objects.get(name=request.POST['name'])
+            
+        
+            if person.ticket_name == ticket.num:
+                message = '您已訂過此票！'
+            else:
+                if ticket.seats >= 1:
+                    message = '訂票成功！'
+                    ticket.seats -= 1
+                    ticket.save()
+                    person.name = request.POST['name']
+                    person.phone_number = request.POST['phone_number']
+                    person.ticket_time = ticket.time
+                    person.ticket_name = request.POST['ticket_num']
+                    person.save()
+                else:
+                    message = '座位已滿！'
+                    person.delete()
+
+            content['order_message'] = message
+
+        return render(request, 'Movie/order_system.html', context=content)
+
+    else:
+
+        return HttpResponseRedirect(reverse(Order))
+
 
 
 
