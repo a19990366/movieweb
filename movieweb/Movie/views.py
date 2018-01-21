@@ -119,7 +119,7 @@ def Order(request):
 
     else:
 
-        return HttpResponseRedirect(reverse(Order))
+        return HttpResponseRedirect(reverse(detailview))
 
 
 
