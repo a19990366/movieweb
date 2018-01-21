@@ -1,8 +1,21 @@
+{% load staticfiles %}
+<header>
+<div id="menu">
+<label id="menu"> 
 <ul id="menu">
+  <img src="{% static 'main/img/logo.png' %}" width="100px" height="100px">
+  {% if user.is_authenticated %}
+    <li><a href="{% url 'account:logout' %}">登出 ({{ user.username }})</a></li>
+  {% else %}
+    <li><a href="{% url 'account:login' %}">登入</a></li>
+    <li><a href="{% url 'account:register' %}">註冊</a></li>
+  {% endif %}
+  <li><a href="{% url 'ContactUs:ContactUsForms' %}">聯絡我們</a></li>
+  <li><a href="{% url 'Movie:OrderTicket' %}">線上訂票</a></li>
+  <li><a href="{% url 'Movie:MovieEquipment' %}">影城配備</a></li>
+  <li><a href="{% url 'Movie:NEWS' %}">電影介紹</a></li>
   <li><a href="{% url 'main:main' %}">首頁</a></li>
-  <li><a href="{% url 'MovieIntroduction:MovieIntroduction' %}">電影介紹</a></li>
-  <li><a href="{% url 'MovieTheater:MovieTheater' %}">影城據點</a></li>
-  <li><a href="{% url 'MovieEquipment:MovieEquipment' %}">影城配備</a></li>
-  <li><a href="{% url 'BuyTicket:BuyTicket' %}">線上購票</a></li>
-  <li><a href="{% url 'ContactUs:ContactUs' %}">聯絡我們</a></li>
 </ul>
+</label>
+</div>
+</header>

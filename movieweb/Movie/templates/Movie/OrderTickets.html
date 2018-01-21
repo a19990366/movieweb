@@ -5,11 +5,13 @@
     <title>FCM 影城</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
-    <link rel="stylesheet" href="{% static 'ContactUs/css/ContactUs.css' %}">
   </head>
   <body>
     {% include 'main/menu.html' %}
-    <h2>聯絡我們</h2>
-    <p><a href="{% url 'ContactUs:ContactUsForms' %}">傳送訊息</a></p>
+    <h2>線上訂票</h2>
+    <form method="post" action="{% url 'Movie:OrderTickets' %}">
+      {% csrf_token %}
+      {{ ticketForm.as_p }}
+      <input type="submit" value="送出">
   </body>
 </html>

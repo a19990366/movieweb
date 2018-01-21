@@ -2,12 +2,71 @@
 {% load staticfiles %}
 <html>
   <head>
-    <title>movieweb</title>
-    <meta charset="utf-8">
+    <title>FCM 影城</title>
+    <meta charset= "utf-8">
     <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+	  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      $(".now").click(function(){
+        $("#1").attr("src","{% static 'main/img/9.jpg' %}");      
+        $("#2").attr("src","{% static 'main/img/10.jpg' %}");      
+        $("#3").attr("src","{% static 'main/img/11.jpg' %}");      
+        $("#4").attr("src","{% static 'main/img/12.jpg' %}");      
+        $("#5").attr("src","{% static 'main/img/13.jpg' %}");      
+        $("#6").attr("src","{% static 'main/img/14.jpg' %}");
+      });
+      $(".new").click(function(){  
+        $("#1").attr("src","{% static 'main/img/3.jpg' %}");      
+        $("#2").attr("src","{% static 'main/img/4.jpg' %}");      
+        $("#3").attr("src","{% static 'main/img/5.jpg' %}");      
+        $("#4").attr("src","{% static 'main/img/6.jpg' %}");      
+        $("#5").attr("src","{% static 'main/img/7.jpg' %}");      
+        $("#6").attr("src","{% static 'main/img/8.jpg' %}");
+      });
+    });
+    </script>
   </head>
   <body>
     {% include 'main/menu.html' %}
-    <h2>首頁</h2>
+    {% include 'main/messages.html' %}
+    <div id="headerl">
+    <text>
+      哈燒新聞<br>
+      蠟筆小新：爆盛！功夫男孩 ～拉麵大亂～ 4/13 上映<br>
+      名偵探柯南：零的執行人 4/13 上映<br>
+      吸血鬼僕人-Alice in the Gard- 4/7 上映<br>
+    </text>
+    </div>
+    <div id="headerR">
+    <text>
+      哈燒新聞<br>
+      文豪 Stray Dogs 3/3 上映<br>
+      大雄的寶島 3/3 上映<br>
+      超時空要塞 Δ 劇場版 激情的女武神 2/9 上映<br>
+    </text>
+    </div>
+    <div id="boody">
+      <label id="menu">
+      <ul id="menu1">
+        <li><a class="now">現正熱映</a></li>
+        <li><a class="new">即將上映</a></li>
+      </ul>
+      </label>
+    <center>
+      <table id="movpic">
+      <tr id="movie">
+        <td><img src="{% static 'main/img/9.jpg' %}" id="1" width="400px" height="600px"></td>
+        <td><img src="{% static 'main/img/10.jpg' %}" id="2" width="400px" height="600x"></td>
+        <td><img src="{% static 'main/img/11.jpg' %}" id="3" width="400px" height="600px"></td>
+      </tr>
+      <tr id="movie">
+        <td><img src="{% static 'main/img/12.jpg' %}" id="4" width="400px" height="600px"></td>
+        <td><img src="{% static 'main/img/13.jpg' %}" id="5" width="400px" height="600px"></td>
+        <td><img src="{% static 'main/img/14.jpg' %}" id="6" width="400px" height="600px"></td>
+      </tr>
+      </table>
+		</center>
+		</div>
   </body>
 </html>

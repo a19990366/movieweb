@@ -1,13 +1,141 @@
-html, body {
-  margin: 0;
-  height: 100%;
+* {
+ box-sizing: border-box;
+ margin: 0;
+ padding: 0;
 }
-
-ul#menu {
-  margin-bottom: 30px;
-  text-align: right;
+body{
+  background:url(../img/background.jpg);
 }
-
-ul#menu li {
+label#menu{
+  float: left;
+  height: 80%;
+  width: 100%;
+  padding: 0;
+  margin: 0em 0em 0em 0em;
+  text-align: center;
+  border-radius: 10px;
+  background-color: black;
+}
+div#menu{
+  margin:0 auto;
+  padding: 0;
+}
+div#headerl{
+  padding: 1em 0;
+  margin: 0 auto;
+  width: 50%;
+  height: 10%;
+  float: left;
+  text-align: center;
+  background-color: yellow;
+}
+div#headerR{
+  padding: 1em 0;
+  margin: 0 auto;
+  width: 50%;
+  height: 10%;
+  float: left;
+  text-align: center;
+  background-color: yellow;
+}
+label#menu ul{
+  list-style-type: none;
+  margin: 0 auto;
+  padding: 0;
+  overflow: auto;  
+}
+label#menu li{
+  float: right;
+  width: 10%;
+  border-radius: 10px;
+}
+ul#menu1 li{
+  float: left;
+  width: 50%;
+  border-radius: 10px;
+}
+ul#menu1 li a{
   display: inline-block;
+  color: white;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  text-decoration: none;  
+  text-align: center;
+  line-height: 2em;
+  font-weight: bold;
+  background-color: black;
+  font-size: 18px;  
+}
+ul#menu li a{
+  display: inline-block;
+  color: white;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  text-decoration: none;  
+  text-align: center;
+  line-height: 5em;
+  font-weight: bold;
+  background-color: black;
+  font-size: 18px;  
+}
+ul#menu li a:hover{
+  background-color: white;
+  color:black;
+}
+ul#menu1 li a:hover{
+  background-color: white;
+  color:black;
+}
+div#boody{
+  margin: 0 auto;
+  width: 100%;
+  height: ;
+  background-color:; 
+}
+label#movpic{
+  padding: 0;
+  width: 100%;
+  height: 900px;
+  margin: 100px auto;
+  background-color: aqua;
+}
+label#movpic ul{
+  float: left;
+}  
+label#movpic li{
+  float: left;
+  list-style-type: none;
+}
+
+.like {
+  font-weight: bold;
+  color: #FF95CA;
+}
+
+img#like {
+  vertical-align: middle;
+  width: 1.6em;
+}
+
+table#tableA {
+  text-align: center;
+  margin-left:auto; 
+  margin-right:auto;
+}
+
+/* Messages */
+.success, .error {
+  padding: 1em 0 1em 3em;
+}
+
+.success {
+  background-color: #ddffdd;
+  border: thin solid green;
+}
+
+.error {
+  background-color: #fbd9d8;
+  border: thin solid red;
 }

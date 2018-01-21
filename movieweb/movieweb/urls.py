@@ -19,10 +19,8 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^main/', include('main.urls', namespace='main')),
-    url(r'^MovieIntroduction/', include('MovieIntroduction.urls', namespace='MovieIntroduction')),
-    url(r'^MovieTheater/', include('MovieTheater.urls', namespace='MovieTheater')),
-    url(r'^MovieEquipment/', include('MovieEquipment.urls', namespace='MovieEquipment')),
-    url(r'^BuyTicket/', include('BuyTicket.urls', namespace='BuyTicket')),
+    url(r'^Movie/', include('Movie.urls', namespace='Movie')),
     url(r'^ContactUs/', include('ContactUs.urls', namespace='ContactUs')),
+    url(r'^account/', include('account.urls', namespace='account')),
     url(r'^.*', include('main.urls')),
 ]

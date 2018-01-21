@@ -1,0 +1,38 @@
+<!doctype html>
+{% load staticfiles %}
+<html>
+  <head>
+    <title>FCM 影城</title>
+    <meta charset= "utf-8">
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'Movie/css/MovieEquipment.css' %}">
+  </head>
+  <body>
+    {% include 'main/menu.html' %}
+    <h2>影城配備</h2>
+    <div id="menu"></div>
+    <div id="Eqpic">
+      <center>
+      <table>
+        <tr>
+          <td><img src="{% static 'Movie/img/ME1.jpg' %}" alt="666" width="200px" height="200px"></td>
+          <td><img src="{% static 'Movie/img/ME2.jpg' %}" alt="666" width="200px" height="200px"></td>
+        </tr>
+        <tr>
+          <td><img src="{% static 'Movie/img/ME3.jpg' %}" alt="666" width="200px" height="200px"></td>
+          <td><img src="{% static 'Movie/img/ME4.jpg' %}" alt="666" width="200px" height="200px"></td>
+        </tr>
+      </table>
+      </center>
+    </div>
+    <div id="eqass">
+    IMAX是加拿大的IMAX集團所研發的一種巨型銀幕電影。
+    一般商業用35厘米影片為4個齒孔一個畫面，IMAX的底片面積有傳統35厘米底片之十倍大之多，保存期限也較長。
+    IMAX底片解析度高，投射至銀幕之畫質表現亦格外清晰自然，就算在比一般播放35厘米影片之銀幕大上十倍之銀幕上仍可呈現完美投射，
+    無粗糙顆粒感之鮮明影像使情境更趨近真實。早期IMAX電影院主要放映自然、科技、環保、動物、地理、人文等教育影片，台中的國立自然科學博物館的太空劇場就是典型。
+    <p>4DX代表當代影院的一套創新技術，4DX影廳是目前全球影院中最新穎的觀影體驗，自從2009年推出後就深受影迷歡迎。
+    威秀影城獨家引進，帶給你世界級的最新影音感官全體驗效果。 置身於電影不再是口號！4DX電影將100多年來銀幕內外的界限打破，這套設備帶給影迷不可思議的觀影感受，
+    可讓影迷體驗片中各種動態效果，包括震動搖晃與左右橫移，甚至是香氣水霧與閃光聲效和風效，讓看電影不再只是看電影，更是徹底融入電影，讓你成為電影的主角。</P>
+    </div>
+  </body>
+</html>

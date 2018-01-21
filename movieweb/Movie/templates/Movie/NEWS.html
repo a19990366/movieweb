@@ -1,0 +1,25 @@
+<!doctype html>
+{% load staticfiles %}
+<html>
+  <head>
+    <title>FCM 影城</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+  </head>
+  <body>
+    {% include 'main/menu.html' %}
+    <h2>電影介紹</h2>
+    <br> 
+    {% for Movie in Movies %}
+      <h3><a href="{% url 'Movie:MovieIntroduction' Movie.id %}">{{ Movie.title }}</a></h3>
+      <br>
+      <p class=like>
+      想看：<img id=like src="{% static 'main/img/like.png' %}" alt="Like"> {{ Movie.likes.count }}  ｜ 
+      <a class=like href="{% url 'Movie:MovieLike' Movie.id %}">加一</a>
+      </p>
+      <br>
+      <p>上映日期：{{ Movie.time }}</p>
+      <hr>
+    {% endfor %}
+  </body>
+</html>

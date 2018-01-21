@@ -1,0 +1,19 @@
+* {
+ box-sizing: border-box;
+ margin: 0;
+ padding: 0;
+}
+div#Eqpic{
+  padding: 5em;
+  float: left;
+  width: 50%;
+  height: 600px;
+}
+div#eqass{
+  padding: 5em;
+  float: left;
+  width: 50%;
+  height: 700px;
+  border-style: solid;
+  border-color: black;
+}
