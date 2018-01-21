@@ -24,6 +24,9 @@ SECRET_KEY = 'ir&eyxgt!f1ppc!rwdxrinda2=^8szku1vqtsxihe$tdrp)shw'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+if 'DYNO' in os.environ:    # Running on Heroku
+    DEBUG = False
+
 
 ALLOWED_HOSTS = ['*']
 
@@ -76,18 +79,23 @@ WSGI_APPLICATION = 'movieweb.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'moviewebDB',
-        'USER': 'movieweb',
-        'PASSWORD': 'movieweb',
-        'HOST': 'localhost',
-        'PORT': '',
+if DEBUG:   # Running on the development environment
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'moviewebDB',
+            'USER': 'movieweb',
+            'PASSWORD': 'movieweb',
+            'HOST': 'localhost',
+            'PORT': '',
+        }
     }
-}
-
+else:   # Running on Heroku
+    # Parse database configuration from $DATABASE_URL
+    import dj_database_url
+    DATABASES = {'default':dj_database_url.config()}
+    # Honor the 'X-Forwarded-Proto' header for request.is_secure()
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -128,3 +136,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGIN_URL = '/account/login/'
+
+# For Heroku deployment
+STATIC_ROOT = 'staticfiles'
