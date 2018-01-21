@@ -30,9 +30,13 @@ def MovieIntroduction(request, articleId):
     '''
     Movie = get_object_or_404(MovieName, id=articleId)
     MovieID = str(Movie.id)
+    upID = Movie.id + 1
+    downID = Movie.id - 1
     context = {
         'Movie': Movie,
         'MovieID':MovieID,
+        'upID':upID,
+        'downID':downID,
     }
     return render(request, 'Movie/MovieIntroduction.html', context)
 

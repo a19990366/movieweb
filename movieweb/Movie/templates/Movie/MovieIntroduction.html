@@ -4,27 +4,26 @@
   <head>
     <title>FCM 影城</title>
     <meta charset= "utf-8">
-    <link rel="stylesheet" href="css/MovieInt.css">
     <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
   </head>
   <body>
     {% include 'main/menu.html' %}
-    <div id="menu"></div>
+    <center>
     <div id="moviepic">
       {% with 'main/img/'|add:MovieID|add:'.jpg' as staticImage %}
-        <img src="{% static staticImage %}" alt="GLEN" width="400px" height="600px>
+        <img src="{% static staticImage %}" alt="GLEN" width="400px" height="600px">
       {% endwith %}
     </div>
     <div id="boody">
+      <br>
       <h2>{{ Movie }}</h2>
+      <br>
       <p>{{ Movie.content }}</p>
-      <p>限制級</p>
     </div>
-    <div id="but">
-      <ul>
-        <li><a href="" class="last">上ㄧ部</a></li>
-        <li><a href="" class="next">下一部</a></li>
-      </ul>
+    <div id="but">     
+        <input type ="button" onclick="javascript:location.href='http://127.0.0.1:8000/Movie/MovieIntroduction/'+{{ downID }}+'/'" value="上ㄧ部"></input>
+        <input type ="button" onclick="javascript:location.href='http://127.0.0.1:8000/Movie/MovieIntroduction/'+{{ upID }}+'/'" value="下ㄧ部"></input>        
     </div>
+    </center>
   </body>
 </html>
