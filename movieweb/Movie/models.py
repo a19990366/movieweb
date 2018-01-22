@@ -20,7 +20,7 @@ class MovieName(models.Model):
 
 class Ticket(models.Model):
     name = models.CharField(max_length=30, verbose_name=u"電影名稱")
-    num = models.CharField(default='M200', max_length=10, verbose_name=u"電影編號")
+    num = models.CharField(default='M201', max_length=10, verbose_name=u"電影編號")
     time = models.DateTimeField(verbose_name=u"電影開播時間")
     brief = models.TextField(max_length=300, verbose_name=u"電影票信息")
     seats = models.IntegerField(default=0, verbose_name=u"剩餘座位")

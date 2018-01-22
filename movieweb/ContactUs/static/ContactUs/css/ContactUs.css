@@ -1,6 +1,7 @@
 input[type=text] {
   padding: 0.4em;
+  margin: 10px 9px;
 }
-ul#foms{
+input[type=email] {
   padding: 0.4em;
 }

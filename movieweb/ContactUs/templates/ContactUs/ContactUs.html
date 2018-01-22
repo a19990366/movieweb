@@ -4,12 +4,22 @@
   <head>
     <title>FCM 影城</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+		<link rel="stylesheet" href="{% static 'main/css/main.css' %}">
     <link rel="stylesheet" href="{% static 'ContactUs/css/ContactUs.css' %}">
-  </head>
+	</head>
   <body>
     {% include 'main/menu.html' %}
     <h2>聯絡我們</h2>
-    <p><a href="{% url 'ContactUs:ContactUsForms' %}">傳送訊息</a></p>
-  </body>
-</html>
+    <div id="contact">
+      <p>歡迎留下您的寶貴意見,<br>
+         請E-mail客服信箱或致電客服專線聯繫我們。
+      </p>
+    <form method="post" action="{% url 'ContactUs:ContactUs' %}">
+      {% csrf_token %}
+      <ul>
+      {{ ContactUsForm.as_p }}
+      </ul>
+      <input type="submit" value="送出">
+    </form>
+    </div>
+    </body>

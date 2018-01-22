@@ -30,13 +30,9 @@ def MovieIntroduction(request, articleId):
     '''
     Movie = get_object_or_404(MovieName, id=articleId)
     MovieID = str(Movie.id)
-    upID = Movie.id + 1
-    downID = Movie.id - 1
     context = {
         'Movie': Movie,
         'MovieID':MovieID,
-        'upID':upID,
-        'downID':downID,
     }
     return render(request, 'Movie/MovieIntroduction.html', context)
 
@@ -90,8 +86,12 @@ def Order(request):
         }
         
         if ticket_form.is_valid():
-
-            ticket = get_object_or_404(Ticket, num=request.POST['ticket_num'])
+            try:
+                ticket = get_object_or_404(Ticket, num=request.POST['ticket_num'])
+            except:
+                message="編號輸入錯誤"
+                content['order_message'] = message
+                return render(request, 'Movie/order_system.html', context=content)
             
             person = Person.objects.create() if not Person.objects.filter(name=request.POST['name']) \
                 else Person.objects.get(name=request.POST['name'])
